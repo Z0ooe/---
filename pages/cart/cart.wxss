@@ -6,3 +6,14 @@
 .revice_address_row .address_btn button {
   width: 60%;
 }
+.revice_address_row .address {
+  display: flex;
+  padding: 10rpx 20rpx;
+}
+.revice_address_row .address .address_info {
+  flex: 7;
+}
+.revice_address_row .address .phone {
+  flex: 3;
+  text-align: right;
+}
