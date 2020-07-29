@@ -1,0 +1,113 @@
+/* pages/goods_detail/goods_detail.wxss */
+page {
+    padding-bottom: 90rpx;
+}
+
+.detail_swiper {
+    swiper {
+        height: 60vw;
+        text-align: center;
+
+        image {
+            width: 60%;
+        }
+    }
+}
+
+.goods_price {
+    padding: 15rpx;
+    font-size: 32rpx;
+    font-weight: 600;
+    color: cornflowerblue;
+}
+
+.goods_name_row {
+    display: flex;
+    border-top: 5rpx solid gainsboro;
+    border-bottom: 5rpx solid gainsboro;
+    padding: 10rpx 0;
+
+    .goods_name {
+        flex: 5;
+        color: black;
+        font-size: 28rpx;
+        border-right: 1px solid beige;
+        padding: 0 15rpx;
+    }
+
+    .goods_collect {
+        flex: 1;
+        text-align: center;
+        align-items: center;
+
+        .iconfont {}
+
+        .collect_text {}
+    }
+}
+
+.goods_detail {
+    .goods_detail_title {
+        font-size: 32rpx;
+        color: indianred;
+        font-weight: 600;
+        padding: 20rpx;
+        text-align: center;
+        border-bottom: 5rpx solid gainsboro;
+    }
+
+    .goods_info_content {}
+}
+
+.btm_tool {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 90rpx;
+    width: 100%;
+    background-color: #fff;
+
+    .tool_item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+
+        button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .btn_cart {
+        flex: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #ffa500;
+        color: white;
+        font-size: 30rpx;
+        font-weight: 600;
+    }
+
+    .btn_buy {
+        flex: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #eb4450;
+        color: white;
+        font-size: 30rpx;
+        font-weight: 600;
+    }
+}

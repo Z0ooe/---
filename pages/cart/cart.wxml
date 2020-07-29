@@ -1,0 +1,6 @@
+<!-- pages/cart/cart.wxml -->
+<view class="revice_address_row">
+    <view class="address_btn">
+        <button bindtap="handleChooseAdress" type="primary" plain="{{true}}">获取收货地址</button>
+    </view>
+</view>

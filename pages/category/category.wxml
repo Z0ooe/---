@@ -1,0 +1,26 @@
+<!-- pages/category/category.wxml -->
+<view class="cates">
+    <searchInput></searchInput>
+    <view class="cates_container">
+        <scroll-view class="leftmenu" scroll-y="true">
+            <view bindtap="changeSrot" data-index="{{index}}" class="menu_item {{index===isSelect?'selective':''}}" wx:for="{{leftMenuDatas}}" wx:key="*this">
+                {{item}}
+            </view>
+        </scroll-view>
+        <scroll-view class="rightmenu" scroll-y="true">
+            <view class="brands_group" wx:for="{{rightContents}}" wx:key="cat_name" wx:for-index="right_index1" wx:for-item="right_item1">
+                <view class="brands_title">
+                    <view class="gan">/</view>
+                    {{right_item1.cat_name}}
+                    <view class="gan">/</view>
+                </view>
+                <view class="brands_list">
+                    <navigator class="brands" wx:for="{{right_item1.children}}" wx:key="cat_id" wx:for-index="right_index2" wx:for-item="right_item2" url="/pages/goods_list/goods_list?cid={{right_item2.cat_id}}">
+                        <image src="{{right_item2.cat_icon}}" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+                        <view>{{right_item2.cat_name}}</view>
+                    </navigator>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
