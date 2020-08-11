@@ -13,16 +13,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address: {}
+    address: {},
+    cart: []
   },
   onShow: function () {
     const address = wx.getStorageSync("address");
+    const cart = wx.getStorageSync("cart");
     this.setData({
-      address: address
+      address: address,
+      cart: cart
     })
-    if (address != null) {
-
-    }
   },
   /**
    * 生命周期函数--监听页面加载

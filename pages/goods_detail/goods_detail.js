@@ -60,6 +60,7 @@ Page({
       urls: urls // 需要预览的图片http链接列表
     })
   },
+  //加入购物车
   handleCartAdd() {
     //刚开始如果为空的时候给一个格式
     let cart = wx.getStorageSync("cart") || [];
