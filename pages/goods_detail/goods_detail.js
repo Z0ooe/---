@@ -73,6 +73,8 @@ Page({
       cart.push(this.goodsInfo);
       // console.log("1");
       // console.log(JSON.stringify(cart))
+      //添加选择状态
+      this.goodsInfo[0].isChoosed = true;
     } else {
       cart[index][0].num++;
       console.log(cart[index][0].num);
