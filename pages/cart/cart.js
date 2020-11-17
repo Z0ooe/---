@@ -25,10 +25,10 @@ Page({
 
     //every 数组方法 遍历 会接收一个回调函数 如果每一个回调函数的返回值都为true every的返回值就为true
     //只要有一个是false直接返回false 
-    //空数组调用every返回值为true
+    //但是 空数组调用every返回值为true
     // const allChecked = cart.length ? cart.every(v => v[0].isChoosed) : false;
 
-    //底部的总价格 总数量
+    //底部的总价格 总数量 商品被选中的时候才计算
     let totalPrice = 0;
     let totalNum = 0;
     let allChecked = false;
@@ -94,7 +94,19 @@ Page({
     }
   },
   handleItemChange(e) {
-    console.log(e.currentTarget.dataset.id)
-
+    //获取被修改的商品id
+    // console.log(e.currentTarget.dataset.id);
+    let goods_id = e.currentTarget.dataset.id;
+    //获取购物车数组
+    let {
+      cart
+    } = this.data;
+    // let cart1 = this.data.cart;
+    // console.log(cart);
+    // console.log('cart1' + cart1);
+    //找到被修改的商品对象
+    let index = cart.findIndex(v => v[0].goods_id === goods_id);
+    // console.log(index);
+    cart[index][0].isChoosed = !cart[index][0].isChoosed;
   }
 })
