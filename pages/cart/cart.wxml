@@ -44,7 +44,7 @@
 <view class="c">
     <view class="settlement_wrap">
         <view class="check_wrap">
-            <checkbox-group bindchange="">
+            <checkbox-group bindchange="handleAllChange">
                 <checkbox class="all" checked="{{allChecked}}">全选</checkbox>
             </checkbox-group>
         </view>
