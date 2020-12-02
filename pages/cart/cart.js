@@ -137,5 +137,35 @@ Page({
       v[0].isChoosed = allChecked;
     })
     this.cartSet(cart);
+  },
+  //点击加号
+  minus(e){
+	  //获取被修改的商品id
+	  // console.log(e.currentTarget.dataset.id);
+	  let goods_id = e.currentTarget.dataset.id;
+	  //获取购物车数组
+	  let {
+	    cart
+	  } = this.data;
+	  //找到被修改的商品对象
+	  let index = cart.findIndex(v => v[0].goods_id === goods_id);
+	  // console.log(index);
+	  cart[index][0].num +=1;
+	  this.cartSet(cart);
+  },
+  //点击减号
+  plus(e){
+	  //获取被修改的商品id
+	  // console.log(e.currentTarget.dataset.id);
+	  let goods_id = e.currentTarget.dataset.id;
+	  //获取购物车数组
+	  let {
+	    cart
+	  } = this.data;
+	  //找到被修改的商品对象
+	  let index = cart.findIndex(v => v[0].goods_id === goods_id);
+	  // console.log(index);
+	  cart[index][0].num -= 1;
+	  this.cartSet(cart);
   }
 })
