@@ -2,7 +2,8 @@
 import {
   getSetting,
   chooseAddress,
-  openSetting
+  openSetting,
+  showModal
 } from "../../utils/asyncWX.js"
 
 //引用es7 的语法引用，或者勾选增强编译
@@ -43,27 +44,6 @@ Page({
   },
   //点击收货地址
   async handleChooseAdress() {
-    // wx.getSetting({
-    //   success: (result) => {
-    //     const scopeAddress = result.authSetting["scope.address"];
-    //     if (scopeAddress === true || scopeAddress === undefined) {
-    //       wx.chooseAddress({
-    //         success: (result1) => {
-    //           console.log(result1)
-    //         }
-    //       });
-    //     } else {
-    //       wx.openSetting({
-    //         success: (result3) => {
-    //           console.log(result3)
-    //         },
-    //         fail: () => {},
-    //         complete: () => {}
-    //       });
-    //     }
-    //     console.log(result)
-    //   }
-    // });
     try {
       //1获取权限状态
       const res1 = await getSetting();
@@ -138,34 +118,31 @@ Page({
     })
     this.cartSet(cart);
   },
-  //点击加号
-  minus(e){
-	  //获取被修改的商品id
-	  // console.log(e.currentTarget.dataset.id);
-	  let goods_id = e.currentTarget.dataset.id;
-	  //获取购物车数组
-	  let {
-	    cart
-	  } = this.data;
-	  //找到被修改的商品对象
-	  let index = cart.findIndex(v => v[0].goods_id === goods_id);
-	  // console.log(index);
-	  cart[index][0].num +=1;
-	  this.cartSet(cart);
-  },
-  //点击减号
-  plus(e){
-	  //获取被修改的商品id
-	  // console.log(e.currentTarget.dataset.id);
-	  let goods_id = e.currentTarget.dataset.id;
-	  //获取购物车数组
-	  let {
-	    cart
-	  } = this.data;
-	  //找到被修改的商品对象
-	  let index = cart.findIndex(v => v[0].goods_id === goods_id);
-	  // console.log(index);
-	  cart[index][0].num -= 1;
-	  this.cartSet(cart);
+  //加号，减号点击事件
+  async handleItemNumEdit(e) {
+    //获取被修改的商品id
+    const {
+      operation,
+      id
+    } = e.currentTarget.dataset;
+    console.log('operation,id+' + operation, id);
+    //获取购物车数组
+    let {
+      cart
+    } = this.data;
+    //找到被修改的商品对象
+    let index = cart.findIndex(v => v[0].goods_id === id);
+    if (cart[index][0].num == 1 && operation == '-1') {
+      const res = await showModal({
+        'content': '是否删除当前商品?'
+      });
+      if (res.confirm) {
+        cart.splice(index, 1);
+        this.cartSet(cart);
+      }
+    } else {
+      cart[index][0].num += operation;
+      this.cartSet(cart);
+    }
   }
 })

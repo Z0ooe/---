@@ -32,9 +32,13 @@
                 <view class="goods_price_wrap">
                     <view class="goods_price">￥{{item[0].pics_id}}</view>
                     <view class="goods_num_tool">
-                        <view data-id="{{item[0].goods_id}}" class="plus" bindtap="plus">-</view>
+                        <view data-id="{{item[0].goods_id}}" data-operation="{{-1}}" class="plus" bindtap="handleItemNumEdit">
+                            -
+                        </view>
                         <view class="number">{{item[0].num}}</view>
-                        <view data-id="{{item[0].goods_id}}" class="minus" bindtap="minus">+</view>
+                        <view data-id="{{item[0].goods_id}}" data-operation="{{1}}" class="minus" bindtap="handleItemNumEdit">
+                            +
+                        </view>
                     </view>
                 </view>
             </view>
