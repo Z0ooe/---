@@ -18,31 +18,36 @@
 <view class="cart_content">
     <view class="cart_title">购物车</view>
     <view class="cart_main">
-        <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
-            <view class="cart_cbx_wrap">
-                <checkbox-group data-id="{{item[0].goods_id}}" bindchange="handleItemChange">
-                    <checkbox checked="{{item[0].isChoosed}}"></checkbox>
-                </checkbox-group>
-            </view>
-            <navigator class="cart_img_wrap">
-                <image src="{{item[0].pics_sma_url}}" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
-            </navigator>
-            <view class="cart_ionfo_wrap">
-                <view class="goods_name">{{item[0].goods_id}}</view>
-                <view class="goods_price_wrap">
-                    <view class="goods_price">￥{{item[0].pics_id}}</view>
-                    <view class="goods_num_tool">
-                        <view data-id="{{item[0].goods_id}}" data-operation="{{-1}}" class="plus" bindtap="handleItemNumEdit">
-                            -
-                        </view>
-                        <view class="number">{{item[0].num}}</view>
-                        <view data-id="{{item[0].goods_id}}" data-operation="{{1}}" class="minus" bindtap="handleItemNumEdit">
-                            +
+        <block wx:if="{{cart.length!=0}}">
+            <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
+                <view class="cart_cbx_wrap">
+                    <checkbox-group data-id="{{item[0].goods_id}}" bindchange="handleItemChange">
+                        <checkbox checked="{{item[0].isChoosed}}"></checkbox>
+                    </checkbox-group>
+                </view>
+                <navigator class="cart_img_wrap">
+                    <image src="{{item[0].pics_sma_url}}" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+                </navigator>
+                <view class="cart_ionfo_wrap">
+                    <view class="goods_name">{{item[0].goods_id}}</view>
+                    <view class="goods_price_wrap">
+                        <view class="goods_price">￥{{item[0].pics_id}}</view>
+                        <view class="goods_num_tool">
+                            <view data-id="{{item[0].goods_id}}" data-operation="{{-1}}" class="plus" bindtap="handleItemNumEdit">
+                                -
+                            </view>
+                            <view class="number">{{item[0].num}}</view>
+                            <view data-id="{{item[0].goods_id}}" data-operation="{{1}}" class="minus" bindtap="handleItemNumEdit">
+                                +
+                            </view>
                         </view>
                     </view>
                 </view>
             </view>
-        </view>
+        </block>
+        <block wx:else>
+            <view class="" hover-class="none" hover-stop-propagation="false">没有商品</view>
+        </block>
     </view>
 </view>
 <view class="c">
@@ -59,7 +64,7 @@
             </view>
             <view class="inc_yunfei">包含运费</view>
         </view>
-        <view class="jiesuan_btyn">
+        <view class="jiesuan_btyn" bindtap="handlePay">
             结算
             <view>({{totalNum}})</view>
         </view>

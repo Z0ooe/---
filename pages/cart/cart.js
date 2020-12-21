@@ -3,7 +3,8 @@ import {
   getSetting,
   chooseAddress,
   openSetting,
-  showModal
+  showModal,
+  showToast
 } from "../../utils/asyncWX.js"
 
 //引用es7 的语法引用，或者勾选增强编译
@@ -144,5 +145,26 @@ Page({
       cart[index][0].num += operation;
       this.cartSet(cart);
     }
+  },
+  async handlePay() {
+    const {
+      address,
+      totalNum
+    } = this.data;
+    if (!address.userName) {
+      await showToast({
+        'content': '您还未选择收货地址'
+      });
+      return;
+    }
+    if (totalNum === 0) {
+      await showToast({
+        'content': '购物车里没有东西，不需要结算'
+      });
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/pay/pay'
+    });
   }
 })

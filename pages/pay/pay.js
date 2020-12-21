@@ -1,11 +1,16 @@
 // pages/pay/index.js
+import {
+  request
+}
+from "../../request/index.js";
+import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    address: {}
   },
 
   /**
@@ -26,7 +31,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const address = wx.getStorageSync("address");
+    this.setData({
+      address
+    })
   },
 
   /**

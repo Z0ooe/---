@@ -1,1 +1,14 @@
-/* pages/pay/index.wxss */
+page {
+  padding-bottom: 90rpx;
+}
+.payPage .address {
+  display: flex;
+  padding: 10rpx 20rpx;
+}
+.payPage .address .address_info {
+  flex: 7;
+}
+.payPage .address .phone {
+  flex: 3;
+  text-align: right;
+}

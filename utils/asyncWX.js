@@ -56,3 +56,23 @@ export const showModal = ({
         })
     })
 }
+export const showToast = ({
+    content
+}) => {
+    return new Promise((resolve, reject) => {
+        wx.showToast({
+            title: content,
+            icon: 'none',
+            image: '',
+            duration: 1500,
+            mask: false,
+            success: (res) => {
+                resolve(res);
+            },
+            fail: (err) => {
+                reject(err)
+            },
+            complete: () => {}
+        });
+    })
+}

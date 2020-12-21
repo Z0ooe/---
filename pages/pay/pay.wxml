@@ -1,2 +1,11 @@
-<!--pages/pay/index.wxml-->
-<text>pages/pay/index.wxml</text>
+<view class="payPage">
+    <view class="address">
+        <view class="address_info">
+            <view class="user">{{address.userName}}</view>
+            <view class="addresName">
+                {{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}
+            </view>
+        </view>
+        <view class="phone">{{address.telNumber}}</view>
+    </view>
+</view>
