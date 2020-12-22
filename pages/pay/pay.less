@@ -1,7 +1,18 @@
-page{
-    padding-bottom:90rpx;
+/* pages/cart/cart.wxss */
+page {
+    padding-bottom: 90rpx;
 }
-.payPage{
+
+.revice_address_row {
+    .address_btn {
+        padding: 20rpx;
+        border-bottom: 1px solid #000;
+
+        button {
+            width: 60%;
+        }
+    }
+
     .address {
         display: flex;
         padding: 10rpx 20rpx;
@@ -13,6 +24,163 @@ page{
         .phone {
             flex: 3;
             text-align: right;
+        }
+    }
+}
+
+.cart_content {
+
+    .cart_title {
+        font-size: 40rpx;
+        padding: 10rpx;
+        border-top: 1px solid var(--themeColor);
+        border-bottom: 1px solid var(--themeColor);
+
+    }
+
+    .cart_main {
+        .cart_item {
+            display: flex;
+            padding: 10rpx;
+            border-bottom: 1px solid #ccc;
+
+            .cart_cbx_wrap {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                checkbox-group {
+                    checkbox {}
+                }
+            }
+
+            .cart_img_wrap {
+                flex: 2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                image {
+                    width: 80%;
+                }
+            }
+
+            .cart_ionfo_wrap {
+                flex: 4;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                .goods_name {
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+
+                .goods_price_wrap {
+                    display: flex;
+
+                    .goods_price {
+                        flex: 2;
+                        color: var(--themeColor);
+                        font-size: 34rpx;
+                    }
+
+                    .goods_num_tool {
+                        flex: 1;
+                        display: flex;
+
+                        .plus {
+                            width: 55rpx;
+                            height: 55rpx;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border: 1px solid #ccc;
+                        }
+
+                        .number {
+                            width: 55rpx;
+                            height: 55rpx;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        .minus {
+                            width: 55rpx;
+                            height: 55rpx;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border: 1px solid #ccc;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.c {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 75rpx;
+
+    .settlement_wrap {
+        display: flex;
+
+
+        .check_wrap {
+            flex: 2;
+            display: flex;
+            align-items: center;
+
+            .all {
+                padding-left: 20rpx;
+            }
+        }
+
+        .amount_wrap {
+            flex: 4;
+            text-align: right;
+
+            .amo {
+                display: flex;
+                flex-direction: row;
+
+                .amount {
+                    flex: 1;
+                }
+
+                .amo_num {
+                    color: var(--themeColor);
+                    padding-left: 15rpx;
+                    padding-right: 15rpx;
+                }
+            }
+
+
+            .inc_yunfei {
+                padding-right: 15rpx;
+                color: var(--themeColor);
+            }
+        }
+
+        .jiesuan_btyn {
+            flex: 2;
+            background-color: var(--themeColor);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            view {}
         }
     }
 }

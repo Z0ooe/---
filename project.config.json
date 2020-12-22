@@ -95,8 +95,9 @@
           "scene": null
         },
         {
-          "name": "pages/pay/pay",
+          "name": "支付页面",
           "pathName": "pages/pay/pay",
+          "query": "",
           "scene": null
         }
       ]

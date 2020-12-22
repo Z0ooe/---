@@ -1,8 +1,13 @@
-// pages/pay/index.js
+// pages/cart/cart.js
 import {
-  request
-}
-from "../../request/index.js";
+  getSetting,
+  chooseAddress,
+  openSetting,
+  showModal,
+  showToast
+} from "../../utils/asyncWX.js"
+
+//引用es7 的语法引用，或者勾选增强编译
 import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
@@ -10,65 +15,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address: {}
+    address: {},
+    cart: [],
+    allChecked: false,
+    totalPrice: 0,
+    totalNum: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     const address = wx.getStorageSync("address");
+    let cart = wx.getStorageSync("cart");
+    cart = cart.filter(v => v[0].isChoosed);
+    //every 数组方法 遍历 会接收一个回调函数 如果每一个回调函数的返回值都为true every的返回值就为true
+    //只要有一个是false直接返回false 
+    //但是 空数组调用every返回值为true
+    // const allChecked = cart.length ? cart.every(v => v[0].isChoosed) : false;
     this.setData({
       address
     })
+
+    //加载购物车
+    let totalPrice = 0;
+    let totalNum = 0;
+    console.log(cart);
+    cart.forEach(v => {
+      totalPrice += v[0].num * v[0].pics_id;
+      totalNum += v[0].num;
+    });
+    this.setData({
+      totalPrice,
+      totalNum,
+      cart
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 判断缓存中有没有token，没有就先去获取，
+  // 获取token需要code，code在wx- login里面拿
+  async handlePay() {
+    const token = wx.getStorageSync("token");
+    if (!token) {
+      wx.navigateTo({
+        url: '../auth/auth'
+      });
+      return;
+    }
   }
 })
